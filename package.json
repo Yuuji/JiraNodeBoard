@@ -1,0 +1,19 @@
+{
+  "name" : "JiraNodeBoard",
+  "description" : "Agile Board for Jira in node.js.",
+  "homepage" : "http://www.miasophiemoeller.de/",
+  "keywords" : ["jira", "agile", "board"],
+  "author" : "Mia Sophie Moeller <kontakt@miasophiemoeller.de>",
+  "contributors" : [],
+  "dependencies" : {
+      "node-simple-router": "",
+      "tough-cookie": "",
+      "request": "",
+      "trycatch": "",
+      "node-sass": "",
+      "ejs": ""
+  },
+  "repository" : {"type": "git", "url": "git://github.com/yuuji/jiranodeboard.git"},
+  "main" : "app.js",
+  "version" : "0.1.0"
+}

@@ -1,0 +1,41 @@
+<article>
+    <header>CouchDB-Setup</header>
+    <p>
+        <form id="setupform" data-page="dbsetup">
+            <table>
+                <tbody>
+                    <% if (error) { %>
+                    <tr class="error">
+                        <td>Fehler:</td>
+                        <td><%= error %></td>
+                    </tr>
+                    <% } %>
+                    <tr>
+                        <td>Hostname:</td>
+                        <td><input type="text" name="hostname" value="<%= config.couchHostname %>" /></td>
+                    </tr>
+                    <tr>
+                        <td>Port:</td>
+                        <td><input type="number" name="port" value="<%= config.couchPort %>" /></td>
+                    </tr>
+                    <tr>
+                        <td>Databasename:</td>
+                        <td><input type="text" name="database" value="<%= config.couchDatabase %>" /></td>
+                    </tr>
+                    <tr>
+                        <td>Username (optional):</td>
+                        <td><input type="text" name="username" value="<%= config.couchUsername %>" /></td>
+                    </tr>
+                    <tr>
+                        <td>Password (optional):</td>
+                        <td><input type="password" name="password" value="" /></td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td><input type="submit" name="save" value="Speichern" /></td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+    </p>
+</article>

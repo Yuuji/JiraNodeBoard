@@ -1,0 +1,16 @@
+<html>
+    <head>
+        <title>JiraNodeBoard</title>
+        <link rel="stylesheet" href="/module/server/css/reset.css" />
+        <link rel="stylesheet" href="/module/server/css/jiranodeboard.css" />
+        <script src="/module/server/js/jquery.js"></script>
+        <script src="/module/server/js/jiranodeboard.js"></script>
+    </head>
+    <body>
+        <div id="outer">
+            <header><%- render(__dirname + '/header.ejs') %></header>
+            <nav id="menu" class="box"><%- render(__dirname + '/menu.ejs') %></nav>
+            <div id="content"></div>
+        </div>
+    </body>
+</html>

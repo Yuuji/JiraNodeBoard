@@ -1,0 +1,33 @@
+<article>
+    <header>Jira-Setup</header>
+    <p>
+        <form id="setupform" data-page="jirasetup">
+            <table>
+                <tbody>
+                    <% if (error) { %>
+                    <tr class="error">
+                        <td>Fehler:</td>
+                        <td><%= error %></td>
+                    </tr>
+                    <% } %>
+                    <tr>
+                        <td>URL:</td>
+                        <td><input type="text" name="url" value="<%= config.url %>" /></td>
+                    </tr>
+                    <tr>
+                        <td>Username:</td>
+                        <td><input type="text" name="username" value="<%= config.username %>" /></td>
+                    </tr>
+                    <tr>
+                        <td>Password:</td>
+                        <td><input type="password" name="password" value="" /></td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td><input type="submit" name="save" value="Speichern" /></td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+    </p>
+</article>

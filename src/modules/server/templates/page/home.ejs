@@ -1,0 +1,12 @@
+<article>
+    <header>Willkommen</header>
+    <p>Willkommen :)</p>
+    <p>
+        Aktueller Sprint:
+        <% if (error) { %>
+            <p class="error"><%= error %></p>
+        <% } else { %>
+            <%= sprint.name %>
+        <% } %>
+    </p>
+</article>

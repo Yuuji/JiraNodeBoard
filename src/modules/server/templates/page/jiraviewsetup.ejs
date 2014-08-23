@@ -1,0 +1,32 @@
+<article>
+    <header>Jira-Setup</header>
+    <p>
+        <form id="setupform" data-page="jiraviewsetup">
+            <table>
+                <tbody>
+                    <% if (error) { %>
+                    <tr class="error">
+                        <td>Fehler:</td>
+                        <td><%= error %></td>
+                    </tr>
+                    <% } %>
+                    <tr>
+                        <td>Rapdiview:</td>
+                        <td>
+                            <select name="selectedview">
+                                <option value=""></option>
+                                <% for (var key in views) {%>
+                                <option value="<%= views[key].id %>"<%= (views[key].id===selectedViewId ? " selected":"") %>><%= views[key].name %></option>
+                                <% } %>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td><input type="submit" name="save" value="Speichern" /></td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+    </p>
+</article>

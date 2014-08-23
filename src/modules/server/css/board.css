@@ -1,0 +1,61 @@
+.clear {
+    clear: both;
+    float: none !important;
+}
+
+#board {
+    margin: 5px;
+}
+
+#board,
+#board .head,
+#board .body {
+    width: 100%;
+}
+
+#board .head > div {
+    float: left;
+    width: 33%;
+}
+
+#board .body,
+#board .body .issue {
+    clear: both;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+#board .body .issue {
+    background-color: #EEE;
+}
+
+#board .body .issue.inprogress,
+#board .body .subtasks .subtask.inprogress {
+    padding-left: 33%;
+}
+
+#board .body .issue.done,
+#board .body .subtasks .subtask.done {
+    padding-left: 66%;
+    opacity: 0.2;
+}
+
+#board .body .issue .key {
+    float: left;
+    margin-right: 5px;
+}
+
+#board .body .issue .key,
+#board .body .subtasks .subtask .key {
+    font-weight: bold;
+}
+
+#board .body .subtasks.done {
+    display: none;
+}
+
+#board .body .line {
+    width: 100%;
+    height: 0px;
+    border-bottom: 1px dotted black;
+}

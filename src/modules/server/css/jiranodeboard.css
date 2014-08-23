@@ -1,0 +1,110 @@
+#outer {
+    width: 1000px;
+    margin: 0 auto;
+    padding: 10px 20px;
+}
+
+.box {
+    background-color: #FAFAFA;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    border: 1px solid #444;
+    
+    padding: 10px;
+}
+
+.gradient {
+    background: #b3dced; /* Old browsers */
+    background: -moz-linear-gradient(top, #b3dced 0%, #29b8e5 50%, #bce0ee 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#b3dced), color-stop(50%,#29b8e5), color-stop(100%,#bce0ee)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #b3dced 0%,#29b8e5 50%,#bce0ee 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #b3dced 0%,#29b8e5 50%,#bce0ee 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #b3dced 0%,#29b8e5 50%,#bce0ee 100%); /* IE10+ */
+    background: linear-gradient(to bottom, #b3dced 0%,#29b8e5 50%,#bce0ee 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b3dced', endColorstr='#bce0ee',GradientType=0 ); /* IE6-9 */
+    
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
+header {
+    padding: 10px;
+    color: white;
+    @extend .gradient;
+}
+
+header .logo {
+    height: 50px;
+    float: left;
+}
+
+header .welcome {
+    height: 50px;
+    line-height: 50px;
+    font-size: 40px;
+    text-align: center;
+    
+    text-shadow: 1px 1px 1px #4d4d4d;
+}
+
+nav {
+    display: inline-block;
+    float: left;
+}
+
+nav,
+#content {
+    margin-top: 20px;
+}
+
+nav ul li {
+    cursor: pointer;
+    padding: 5px 5px 5px 10px;
+}
+
+nav ul li:hover,
+nav ul li.active {
+   @extend .gradient;
+   color: white;
+}
+
+#content {
+    margin-left: 150px;
+}
+
+#content article {
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    border: 1px solid black;
+    margin-bottom: 20px;
+}
+
+#content article header {
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+    
+    -webkit-border-top-left-radius: 10px;
+    -webkit-border-top-right-radius: 10px;
+    -moz-border-radius-topleft: 10px;
+    -moz-border-radius-topright: 10px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+#content article > p,
+#content article > div {
+    padding: 10px;
+}
+
+table thead th {
+    font-weight: bold;
+}
+
+table th,
+table td {
+    padding: 2px;
+}

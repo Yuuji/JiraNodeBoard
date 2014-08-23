@@ -1,0 +1,62 @@
+<html>
+    <head>
+        <title>JiraNodeBoard</title>
+        <link rel="stylesheet" href="/module/server/css/reset.css" />
+        <link rel="stylesheet" href="/module/server/css/board.css" />
+        <script src="/module/server/js/jquery.js"></script>
+        <script src="/module/server/js/board.js"></script>
+    </head>
+    <body>
+        <div id="board">
+            <div class="head">
+                <div>ToDo</div>
+                <div>In Progress</div>
+                <div>Done</div>
+                <div class="clear"></div>
+            </div>
+            <div class="body">
+                <% for (var key in data.issues.ordered) { 
+                    var issue = data.issues.ordered[key];
+                    
+                    var status = '';
+                    
+                    if (issue.issue.status.id === 10000) {
+                        status = 'todo';
+                    } else if (issue.issue.status.id === 10001) {
+                        status = 'done';
+                    } else {
+                        status = 'inprogress';
+                    }
+                %>
+                <div class="issue <%= status %>" data-id="<%= issue.id %>">
+                    <div class="key"><%= issue.key %></div>
+                   <% if (issue.issue.subtasks.length>0) { %><div class="subtasks">(<%= issue.issue.subtasks.length %> subtasks)</div><% } %>
+                    <div class="summary"><%= issue.summary %></div>
+                </div>
+                <% if (issue.issue.subtasks.length>0) { %>
+                <div class="subtasks <%= status %>">
+                    <% for (var skey in issue.issue.subtasks) { 
+                    var subtask = issue.issue.subtasks[skey];
+                    var substatus = '';
+                    
+                    if (subtask.status.id === 10000) {
+                        substatus = 'todo';
+                    } else if (subtask.status.id === 10001) {
+                        substatus = 'done';
+                    } else {
+                        substatus = 'inprogress';
+                    }
+                    %>
+                        <div class="subtask <%= substatus %>" data-id="<%= subtask.id %>">
+                            <div class="key"><%= subtask.key %></div>
+                            <div class="summary"><%= subtask.summary %></div>
+                        </div>
+                    <% } %>
+                </div>
+                <% } %>
+                <div class="line">&nbsp;</div>
+                <% } %>
+            </div>
+        </div>
+    </body>
+</html>
