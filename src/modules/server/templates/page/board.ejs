@@ -4,6 +4,7 @@
         <link rel="stylesheet" href="/module/server/css/reset.css" />
         <link rel="stylesheet" href="/module/server/css/board.css" />
         <script src="/module/server/js/jquery.js"></script>
+        <script src="/module/server/js/socket-io.js"></script>
         <script src="/module/server/js/board.js"></script>
     </head>
     <body>
@@ -28,7 +29,7 @@
                         status = 'inprogress';
                     }
                 %>
-                <div class="issue <%= status %>" data-id="<%= issue.id %>">
+                <div class="issue <%= status %>" data-id="<%= issue.id %>" data-tag="<%= issue.issue.tagId %>">
                     <div class="key"><%= issue.key %> (Tag: <%= issue.issue.tagId %>)</div>
                    <% if (issue.issue.subtasks.length>0) { %><div class="subtasks">(<%= issue.issue.subtasks.length %> subtasks)</div><% } %>
                     <div class="summary"><%= issue.summary %></div>
@@ -47,7 +48,7 @@
                         substatus = 'inprogress';
                     }
                     %>
-                        <div class="subtask <%= substatus %>" data-id="<%= subtask.id %>">
+                        <div class="subtask <%= substatus %>" data-id="<%= subtask.id %>" data-tag="<%= subtask.tagId %>">
                             <div class="key"><%= subtask.key %> (Tag: <%= subtask.tagId %>)</div>
                             <div class="summary"><%= subtask.summary %></div>
                         </div>

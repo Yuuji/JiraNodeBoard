@@ -1,0 +1,22 @@
+.card {
+    float: left;
+    width: 300pt;
+    height: 100pt;
+    page-break-inside: avoid;
+    padding: 10pt;
+    border: 1px solid grey;
+    margin-right: 10pt;
+    margin-bottom: 10px;
+}
+
+.card img {
+    width: 90pt;
+    float: left;
+    margin-right: 20pt;
+}
+
+.card .text {
+    font-weight: bold;
+    font-size: 200%;
+    line-height: 90pt;
+}

@@ -46,6 +46,26 @@ server.prototype.start = function() {
         url: '/module/server/js',
         path: __dirname + '/js'
     });
+    
+    this.startSocket();
+};
+
+server.prototype.startSocket = function() {
+    var that_ = this;
+    var server = require('http').Server();
+    var io = require('socket.io')(server);
+    
+    server.listen(3010, function(){
+        that_.loadSprintData(function() {
+            AppTags.detectLive(function(id, status) {
+                console.log('Got ' + id + ': ' + status);
+                io.emit('status', {
+                    id: id,
+                    status: status
+                });
+            });
+        });
+    });
 };
 
 server.prototype.loadSprintData = function(callback) {
@@ -178,6 +198,7 @@ server.prototype.pageHandler = function(event) {
         case 'board':
         case 'cam':
         case 'cards':
+        case 'basecards':
             if (!AppCouchDB.connected) {
                 return {
                     header: [
@@ -460,6 +481,15 @@ server.prototype.pageBoard = function() {
             }));
         });
     };
+};
+
+/**
+ * Page basecards
+ * 
+ * @returns {webserver.pageType}
+ */
+server.prototype.pageBasecards = function() {
+    return AppTemplates.renderFile(__dirname + '/templates/page/basecards.ejs');
 };
 
 /**

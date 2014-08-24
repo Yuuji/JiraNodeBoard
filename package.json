@@ -11,7 +11,9 @@
       "request": "",
       "trycatch": "",
       "node-sass": "",
-      "ejs": ""
+      "ejs": "",
+      "socket.io-client": "",
+      "socket.io"
   },
   "repository" : {"type": "git", "url": "git://github.com/yuuji/jiranodeboard.git"},
   "main" : "app.js",
