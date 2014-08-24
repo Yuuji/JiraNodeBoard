@@ -29,7 +29,7 @@
                     }
                 %>
                 <div class="issue <%= status %>" data-id="<%= issue.id %>">
-                    <div class="key"><%= issue.key %></div>
+                    <div class="key"><%= issue.key %> (Tag: <%= issue.issue.tagId %>)</div>
                    <% if (issue.issue.subtasks.length>0) { %><div class="subtasks">(<%= issue.issue.subtasks.length %> subtasks)</div><% } %>
                     <div class="summary"><%= issue.summary %></div>
                 </div>
@@ -48,7 +48,7 @@
                     }
                     %>
                         <div class="subtask <%= substatus %>" data-id="<%= subtask.id %>">
-                            <div class="key"><%= subtask.key %></div>
+                            <div class="key"><%= subtask.key %> (Tag: <%= subtask.tagId %>)</div>
                             <div class="summary"><%= subtask.summary %></div>
                         </div>
                     <% } %>

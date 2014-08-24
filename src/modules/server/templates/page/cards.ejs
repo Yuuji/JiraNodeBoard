@@ -1,0 +1,48 @@
+<html>
+    <head>
+        <title>JiraNodeBoard</title>
+        <link rel="stylesheet" href="/module/server/css/reset.css" />
+        <link rel="stylesheet" href="/module/server/css/cards.css" />
+    </head>
+    <body>
+        <% for (var key in data.issues.ordered) { 
+            var issue = data.issues.ordered[key];
+
+            var status = '';
+
+            if (issue.issue.status.id === 10000) {
+                status = 'todo';
+            } else if (issue.issue.status.id === 10001) {
+                status = 'done';
+            } else {
+                status = 'inprogress';
+            }
+            %>
+            <div class="issue">
+                <div class="tag"><img src="/images/tags/<%= issue.issue.tagId %>.png" /></div>
+                <div class="key"><%= issue.key %> (Tag: <%= issue.issue.tagId %>)</div>
+                <div class="summary"><%= issue.summary %></div>
+            </div>
+            <% if (issue.issue.subtasks.length>0) {
+                for (var skey in issue.issue.subtasks) { 
+                    var subtask = issue.issue.subtasks[skey];
+                    var substatus = '';
+
+                    if (subtask.status.id === 10000) {
+                        substatus = 'todo';
+                    } else if (subtask.status.id === 10001) {
+                        substatus = 'done';
+                    } else {
+                        substatus = 'inprogress';
+                    }
+                    %>
+                    <div class="subtask">
+                        <div class="tag"><img src="/images/tags/<%= subtask.tagId %>.png" /></div>
+                        <div class="key"><%= issue.key %> / <%= subtask.key %> (Tag: <%= subtask.tagId %>)</div>
+                        <div class="summary"><%= subtask.summary %></div>
+                    </div>
+                <% }
+            }
+        } %>
+    </body>
+</html>

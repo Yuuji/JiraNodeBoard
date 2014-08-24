@@ -4,7 +4,9 @@ global.AppTemplates = require('./src/libs/utils/templates');
 
 global.AppCouchDB = require('./src/libs/db/couchdb')(function() {
     global.AppJira = require('./src/libs/jira/jira')(function() {
-        require('./src/libs/net/webserver')();
-        require('./src/modules/modules')();
+        global.AppTags = require('./src/libs/tags/tags')(function() {
+            require('./src/libs/net/webserver')();
+            require('./src/modules/modules')();
+        });
     });
 });

@@ -130,6 +130,13 @@ server.prototype.loadSprintData = function(callback) {
                                         doCallback(false);
                                         return;
                                     } else {
+                                        // todo: Clear if new sprint but not the tag for issues in both sprints
+                                        issue.tagId = AppTags.getTagId(issue.id);
+                                        
+                                        for(var subkey in issue.subtasks) {
+                                            issue.subtasks[subkey].tagId = AppTags.getTagId(issue.subtasks[subkey].id);
+                                        }
+                                        
                                         that_.sprintData.issues[type][key].issue = issue;
                                         doLoop(key+1, type);
                                     }
@@ -169,6 +176,8 @@ server.prototype.pageHandler = function(event) {
         case 'home':
         case 'sprint':
         case 'board':
+        case 'cam':
+        case 'cards':
             if (!AppCouchDB.connected) {
                 return {
                     header: [
@@ -422,13 +431,13 @@ server.prototype.pageSprint = function() {
     var that_ = this;
     return function(callback) {
         that_.loadSprintData(function() {
-            callback({
+            /*callback({
                 header: [200, {'Content-type': 'application/json'}],
                 body: JSON.stringify(that_.sprintData)
-            });
-            /*callback(AppTemplates.renderFile(__dirname + '/templates/page/sprint.ejs', {
+            });*/
+            callback(AppTemplates.renderFile(__dirname + '/templates/page/sprint.ejs', {
                 data: that_.sprintData
-            }));*/
+            }));
         });
     };
 };
@@ -447,6 +456,38 @@ server.prototype.pageBoard = function() {
                 body: JSON.stringify(that_.sprintData)
             });*/
             callback(AppTemplates.renderFile(__dirname + '/templates/page/board.ejs', {
+                data: that_.sprintData
+            }));
+        });
+    };
+};
+
+/**
+ * Page cards
+ * 
+ * @returns {webserver.pageType}
+ */
+server.prototype.pageCards = function() {
+    var that_ = this;
+    return function(callback) {
+        that_.loadSprintData(function() {
+            callback(AppTemplates.renderFile(__dirname + '/templates/page/cards.ejs', {
+                data: that_.sprintData
+            }));
+        });
+    };
+};
+
+/**
+ * Page cam
+ * 
+ * @returns {webserver.pageType}
+ */
+server.prototype.pageCam = function() {
+    var that_ = this;
+    return function(callback) {
+        that_.loadSprintData(function() {
+            callback(AppTemplates.renderFile(__dirname + '/templates/page/cam.ejs', {
                 data: that_.sprintData
             }));
         });

@@ -1,0 +1,23 @@
+.issue,
+.subtask {
+    float: left;
+    width: 210pt;
+    height: 100pt;
+    page-break-inside: avoid;
+    padding: 10pt;
+    border: 1px solid grey;
+    margin-right: 10pt;
+    margin-bottom: 10px;
+}
+
+.issue .tag img,
+.subtask .tag img {
+    width: 90pt;
+    float: left;
+    margin-right: 20pt;
+}
+
+.issue .key,
+.subtask .key {
+    font-weight: bold;
+}
